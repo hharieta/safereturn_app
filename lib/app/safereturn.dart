@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:safereturn/config/config.dart';
-import 'package:safereturn/screens/home_screen.dart';
+//import 'package:safereturn/screens/home_screen.dart';
+//import 'package:safereturn/screens/login_screen.dart';
+import 'package:safereturn/screens/welcome_screen.dart';
 
 class SafereturnApp extends StatelessWidget {
   const SafereturnApp({super.key});
@@ -10,7 +12,7 @@ class SafereturnApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      home: const HomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }

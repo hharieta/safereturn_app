@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 @immutable
 class AppTheme {
@@ -19,7 +19,7 @@ class AppTheme {
     swapColors: true,
     lightIsWhite: true,
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    fontFamily: GoogleFonts.dekko().fontFamily,
+    fontFamily: 'Dekko',
     subThemesData: const FlexSubThemesData(
       useMaterial3Typography: true,
       fabUseShape: true,
