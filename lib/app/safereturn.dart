@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:safereturn/config/config.dart';
-//import 'package:safereturn/screens/home_screen.dart';
-//import 'package:safereturn/screens/login_screen.dart';
-import 'package:safereturn/screens/welcome_screen.dart';
+import 'package:safereturn/config/router/app_router.dart';
 
 class SafereturnApp extends StatelessWidget {
   const SafereturnApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      home: const WelcomeScreen(),
+      routerConfig: appRouter,
     );
   }
 }
