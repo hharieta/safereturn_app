@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:safereturn/utils/utils.dart';
-import 'package:gap/gap.dart';
 import 'package:safereturn/widgets/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colorScheme;
     final deviceSize = context.deviceSize;
     final width = deviceSize.width;
 
@@ -17,41 +16,14 @@ class HomeScreen extends StatelessWidget {
     final isDesktop = width >= 1024;
 
     return Scaffold(
+      appBar: CustomAppBar(
+        title: 'SafeReturn',
+        additionalActions: [
+          ProfileMenu(),
+        ],
+      ),
       body: Stack(
         children: [
-          Column(
-            children: [
-              Container(
-                height: isDesktop
-                    ? deviceSize.height * 0.15
-                    : deviceSize.height * 0.25,
-                width: deviceSize.width,
-                color: colors.primary,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    DisplayWhiteText(
-                      text: 'Welcome to',
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                    ),
-                    Gap(8),
-                    DisplayWhiteText(
-                      text: 'SafeReturn',
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  width: deviceSize.width,
-                  color: colors.surface,
-                ),
-              ),
-            ],
-          ),
           Positioned(
             top:
                 isDesktop ? deviceSize.height * 0.25 : deviceSize.height * 0.15,
@@ -78,10 +50,12 @@ class HomeScreen extends StatelessWidget {
                                 : (deviceSize.width * 0.5) - 24,
                             height: deviceSize.height * 0.15,
                             child: ActionCard(
-                              title: 'Reportar objeto perdido',
-                              description: '¿Perdiste algo? Repórtalo aquí',
+                              title: 'Ingresar objeto perdido',
+                              description:
+                                  'Aquí puedes reportar un objeto perdido',
                               icon: Icons.report_problem_outlined,
                               color: Colors.orange,
+                              onTap: () => context.go('/dashboard/report'),
                             ),
                           ),
                           SizedBox(
@@ -90,9 +64,9 @@ class HomeScreen extends StatelessWidget {
                                 : (deviceSize.width * 0.5) - 24,
                             height: deviceSize.height * 0.15,
                             child: ActionCard(
-                              title: 'He encontrado algo',
+                              title: 'Buscar objeto perdido',
                               description:
-                                  '¿Encontraste un objeto? Ayuda a devolverlo',
+                                  'Aquí puedes buscar un objeto perdido',
                               icon: Icons.search,
                               color: Colors.green,
                             ),
@@ -105,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                             child: ActionCard(
                               title: 'Objetos encontrados',
                               description:
-                                  'Lista de objetos que extrañan a sus dueños',
+                                  'Aquí puedes ver los objetos encontrados',
                               icon: Icons.list_alt,
                               color: Colors.blue,
                             ),

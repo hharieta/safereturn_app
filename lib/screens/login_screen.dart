@@ -208,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
         data['refresh_token'],
       );
       if (!mounted) return;
-      context.go('/home');
+      context.go('/dashboard');
     } else {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(

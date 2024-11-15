@@ -52,10 +52,6 @@ class Footer extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.facebook, color: colors.primary),
-                  ),
-                  IconButton(
-                    onPressed: () {},
                     icon: Icon(Icons.email, color: colors.primary),
                   ),
                   IconButton(
