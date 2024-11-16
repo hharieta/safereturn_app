@@ -69,6 +69,8 @@ class HomeScreen extends StatelessWidget {
                                   'Aquí puedes buscar un objeto perdido',
                               icon: Icons.search,
                               color: Colors.green,
+                              onTap: () =>
+                                  context.go('/dashboard/lost-objects'),
                             ),
                           ),
                           SizedBox(

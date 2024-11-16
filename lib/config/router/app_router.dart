@@ -57,6 +57,10 @@ final appRouter = GoRouter(
               path: 'report',
               builder: (context, state) => const ReportFoundItemScreen(),
             ),
+            GoRoute(
+              path: 'lost-objects',
+              builder: (context, state) => const LostObjectsScreen(),
+            ),
           ],
         ),
       ],
