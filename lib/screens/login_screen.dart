@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:safereturn/utils/utils.dart';
 import 'package:safereturn/widgets/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:safereturn/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscureText = true;
+
+  final _authService = AuthService();
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -140,19 +145,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const SizedBox(height: 24),
                           FilledButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                // TODO: Implementar lógica de login
-                                print('Email: ${_emailController.text}');
-                                print('Password: ${_passwordController.text}');
-                              }
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 12),
-                              child: Text(
-                                'Iniciar Sesión',
-                                style: TextStyle(fontSize: 16),
-                              ),
+                            onPressed: _isLoading ? null : _handleLogin,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              child: _isLoading
+                                  ? const SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: CircularProgressIndicator(
+                                        color: Colors.white,
+                                        strokeWidth: 2,
+                                      ),
+                                    )
+                                  : const Text(
+                                      'Iniciar Sesión',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -173,5 +181,42 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _handleLogin() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    final response = await _authService.login(
+      _emailController.text,
+      _passwordController.text,
+    );
+
+    if (!mounted) return;
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (response['success']) {
+      final data = response['data'];
+      await _authService.handleSuccessfulLogin(
+        data['access_token'],
+        data['refresh_token'],
+      );
+      if (!mounted) return;
+      context.go('/dashboard');
+    } else {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(response['message']),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 }

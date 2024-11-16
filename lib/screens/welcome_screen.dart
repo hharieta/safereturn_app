@@ -95,56 +95,30 @@ class WelcomeScreen extends StatelessWidget {
                         const Gap(24),
                       ],
                     ),
-                    Card(
-                      elevation: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(64.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              '¿Has perdido algo?',
-                              style: TextStyle(
-                                fontSize: isDesktop ? 24 : 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Gap(8),
-                            Text(
-                              'Ayuda a otros a encontrar sus objetos perdidos',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: isDesktop ? 16 : 14,
-                                color: Colors.grey[600],
-                              ),
-                            ),
-                            const Gap(24),
-                            FilledButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginScreen(),
-                                  ),
-                                );
-                              },
-                              style: FilledButton.styleFrom(
-                                minimumSize: const Size(200, 45),
-                              ),
-                              child: const Text('Iniciar Sesión'),
-                            ),
-                            const Gap(12),
-                            OutlinedButton(
-                              onPressed: () {
-                                // TODO: Implementar navegación a registro
-                              },
-                              style: OutlinedButton.styleFrom(
-                                minimumSize: const Size(200, 45),
-                              ),
-                              child: const Text('Registrarse'),
-                            ),
-                          ],
-                        ),
+                    const Gap(24),
+                    FilledButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size(200, 45),
                       ),
+                      child: const Text('Iniciar Sesión'),
+                    ),
+                    const Gap(12),
+                    OutlinedButton(
+                      onPressed: () {
+                        // TODO: Implementar navegación a registro
+                      },
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: const Size(200, 45),
+                      ),
+                      child: const Text('Registrarse'),
                     ),
                     const Gap(24),
                     const Footer(),
