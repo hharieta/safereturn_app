@@ -1,16 +1,3 @@
 # safereturn_app
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![safereturn_app](https://cdn.glitch.global/f8dc0126-7e62-42eb-b9b3-c1d569626a06/Screenshot%202024-11-16%20at%200.33.14.png?v=1731737753015)
